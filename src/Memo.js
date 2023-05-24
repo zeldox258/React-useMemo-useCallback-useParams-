@@ -20,11 +20,13 @@ function Memo() {
   return (
     <div className="App">
         <TsComponent/>
-        <TsNuri/>
-        <TsAlberto/>
-        <TsArshya/>
         <Emre/>
+        <TsAlberto/>
+        <TsNuri/>
         <TsOla/>
+        <TsArshya/>
+        
+        
 
         <h1>x + y = total = {x} + {y} = {total}</h1>
         <button onClick = {() =>{setX(x+25);}}>Click to chage X value</button>

@@ -87,6 +87,25 @@ const emre : person = {
 
 
 
+//Create a type which includes name and age. create function which returns combine of name and age.
+//call that function and assign the result to useState and print it in the page
+
+
+
+//any unknown and never
+
+
+
+
+
+
+
+
+
+
+
+
+import { type } from '@testing-library/user-event/dist/type';
 import React from 'react';
 
 interface TsComponentProps {
@@ -104,10 +123,165 @@ function TsComponent () : React.FC {
   let array: number[] = [1,2,3,4,5];
 
   console.log(bigNumber);
+  let var1 : any = 25; 
+  let var2 : unknown = 5;
+  
+  if(typeof(var2) == "number"){
+    var2 = 15;
+  }
+
+  var1 = 35;
+
+
+function something() : never{
+  throw new Error("WRONG");
+}
+
+function infinitiyLoop() : never{
+  while(true){
+    console.log("Loading...");
+  }
+}
+
+type animal = {
+  readonly name : string,
+  age : number
+}
+
+
+const animal1 : animal = {
+  name : "Dog",
+  age : 15
+}
+
+
+console.log(animal1.name)
+
+animal1.name = "Omer";
+console.log(animal1.name)
+
+
+
+
+interface student {
+  name:string,
+  studentNumber:number
+}
+
+
+const omer : student = {
+  name:"Omer",
+  studentNumber:15
+}
+
+
+interface student2 extends student{
+  fatherName:string
+}
+
+const omer1 : student2 = {
+  name:"Omer",
+  studentNumber:15,
+  fatherName:"Omer"
+}
+
+//create 2 interfaces first one will Person second one will be Manager
+
+
+
+//Tuples are rule format for types
+
+type firstTuple = [number,string,boolean]
+
+const smthg1 : firstTuple = [15,"fsa",true]
+
+
+interface Box<T>{
+  value:T
+}
+
+
+const box1 : Box<number>  = {
+  value : 5
+}
+
+
+console.log("Result is :",box1.value);
+console.log(smthg1[2]);
+
+
+//create generic interface which will have value key and value result will be generic array
+//create one object from this interface value should be [1,2,3,4,5]
+
+
+
+enum Fruit{
+  Apple = "apple",
+  Banana = "banana",
+  Orange = "orange"
+}
+
+
+enum directions{
+  up,down,left,right
+}
+
+
+
+console.log(Fruit.Apple);
+
+
+const directionChecker = (a:directions) : void => {
+  if(a == directions.down){
+    console.log("you moved down");
+  }
+  else if(a == directions.up){
+    console.log("you moved up");
+  }
+  else if(a == directions.left){
+    console.log("you moved left");
+  }
+  else if(a == directions.right){
+    console.log("you moved right");
+  }
+}
+
+directionChecker(directions.down);
+directionChecker(directions.right);
+
+
+
+
+interface first{
+  name:string
+}
+
+interface second {
+  age:number
+}
+
+
+interface third extends first , second{
+  number : number
+}
+
+
+type combinedInterfaces = first & second;
+
+
+let comb1 : combinedInterfaces = {name:"Nuri",age:22}
+let comb2 : third = {name:"Nuri",age:22,number:25}
+
+console.log(comb1,typeof(comb1));
+
+
+console.log(comb2,typeof(comb2));
+
+
 
   return (
     <div>
-      <h1>HELLOOO {name}</h1>
+      <h1>HELLOOO {typeof(var1)} {typeof(var2)} {var2} {var1}</h1>
     </div>
     
   );

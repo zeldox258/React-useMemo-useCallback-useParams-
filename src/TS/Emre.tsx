@@ -1,48 +1,56 @@
-// //Define name age and hobby as array.
-// let fullname: string = "Emre Dag";
-// let age: number = 29;
-// let FavHobbies: string[] = ["Video Game", "Cooking", "Workout"];
+import React, { useState } from 'react';
 
-// //Write a function that takes three arguments,string number and string array it will return null or undefined or boolean
-
-// function myFunction(name: string, age: number, hobbies: string[]): boolean  | null| undefined{
-//     if(fullname === "Emre Dag" && age === 29 && hobbies === FavHobbies){
-//         return true;
-//     }
-//     else{
-//         return false;
-//     }
-    
-
-// }
-// // create car type and write function that takes car type parameter and return age of car.
-
-// type caremre = { brand: string, model: string, year: number }
-
-// let car: caremre = { brand: "Toyota", model: "Corolla", year: 2020 }
-
-// function carAge(car: caremre): number{
-//     return 2023 - car.year;           
-// }
-
-// console.log(carAge(car));
-// console.log(myFunction(fullname, age, FavHobbies));
-
-//Create tsx component with returning fullname
-
-import React from 'react';
-
-
-
+//Create a type which includes name and age. create function which returns combine of name and age.
+//call that function and assign the result to useState and print it in the page
+//create 2 interfaces first one will Person second one will be Manager, manager should extends person
 export default function Emre(): React.FC{
     let name: string = "Emre";
+
+    
+    type Person = {name, age}
+    const Myvariable: Person = { name: "Emre", age: 29 }
+
+    function Combine(person: Person) : string { 
+        return `${person.name} " " ${person.age}`
+    }
+    const [combine, setcombine] = useState(Combine(Myvariable))
+
+    interface Person1 { 
+        name: string,
+        age: number
+    }
+    
+    interface Manager extends Person1  {
+        title: string
+    }
+    
+    const Myvariable2: Manager = { name: "Emre", age: 29, title: "Developer" }
+    
+    function Combine2(person: Manager) : string { 
+        return `${person.name} " " ${person.age} " " ${person.title}`
+    }
     
     return (
         <div>
-            <h1>Hello {name}</h1>
-            
+            <h1>Hello {combine}</h1>
+            <h1>Hello {Combine2(Myvariable2)}</h1>                        
         </div>      
         
       );
       
 };
+
+//create generic interface which will have value key and value result will be generic array
+//create one object from this interface value should be [1,2,3,4,5]
+
+interface Generic<T> {
+    value: T
+}
+
+const Myvariable: Generic<number> = { value: 1 }
+
+const Myvariable3: Generic<number[]> = { value: [1,2,3,4,5] }
+
+
+
+
